@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DISTYS — Cannabis medicinal | Bienestar diseñado por la naturaleza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cyan:#28BAD5; --cyan-dark:#1E93A9; --yellow:#FBD11C;
+    --ink:#1A1A1A; --paper:#FFFFFF; --mist:#F2FAFC; --radius:26px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Montserrat',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;overflow-x:hidden}
+  h1,h2,h3,.display{font-family:'Baloo 2',cursive;letter-spacing:.5px}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-block;font-weight:800;font-family:'Baloo 2',cursive;font-size:16px;padding:14px 30px;border-radius:50px;cursor:pointer;border:3px solid var(--ink);transition:transform .15s ease, box-shadow .15s ease}
+  .btn-yellow{background:var(--yellow);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .btn-cyan{background:var(--cyan);color:#fff;box-shadow:4px 4px 0 var(--ink)}
+  .btn-ghost{background:#fff;color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+
+  /* AGE GATE */
+  #agegate{position:fixed;inset:0;z-index:200;background:var(--cyan);display:flex;align-items:center;justify-content:center;padding:24px}
+  #agegate .box{background:#fff;border:4px solid var(--ink);border-radius:34px;box-shadow:10px 10px 0 var(--ink);max-width:520px;text-align:center;padding:44px 34px}
+  #agegate img{height:54px;margin-bottom:20px}
+  #agegate h2{font-size:30px;margin-bottom:10px}
+  #agegate p{color:#555;font-size:15px;margin-bottom:24px}
+  #agegate .gate-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  #agegate .mini-legal{font-size:12px;color:#999;margin-top:20px}
+  .hidden{display:none!important}
+
+  /* COMPLIANCE BAR */
+  .compliance{background:var(--ink);color:#fff;font-size:13px;font-weight:600;text-align:center;padding:9px 16px}
+  .compliance b{color:var(--yellow)}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:3px solid var(--ink)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+  nav .logo img{height:44px;display:block}
+  nav ul{display:flex;gap:26px;list-style:none;font-weight:700;font-size:14px}
+  nav ul a:hover{color:var(--cyan-dark)}
+  .burger{display:none;font-size:28px;background:none;border:none;cursor:pointer}
+
+  /* HERO */
+  .hero{position:relative;background:var(--cyan);overflow:hidden;padding:66px 0 84px}
+  .blob{position:absolute;border-radius:50%;filter:blur(2px)}
+  .b1{width:520px;height:520px;background:#5fd0e4;top:-140px;right:-120px;opacity:.55}
+  .b2{width:360px;height:360px;background:#1E93A9;bottom:-140px;left:-90px;opacity:.5}
+  .b3{width:180px;height:180px;background:var(--yellow);top:60px;left:44%;opacity:.35}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+  .hero-copy .kicker{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:800;font-family:'Baloo 2',cursive;padding:6px 16px;border-radius:50px;border:3px solid var(--ink);font-size:14px;margin-bottom:22px}
+  .hero-copy h1{font-size:clamp(36px,5vw,58px);line-height:1.03;color:#fff;text-shadow:3px 3px 0 var(--ink)}
+  .hero-copy h1 .hl{color:var(--yellow)}
+  .hero-copy p{color:#fff;font-size:19px;font-weight:500;max-width:470px;margin:22px 0 30px}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+  .hero-visual{display:flex;justify-content:center}
+  .info-card{background:#fff;border:4px solid var(--ink);border-radius:34px;box-shadow:10px 10px 0 var(--ink);padding:28px;width:340px;transform:rotate(-2.5deg)}
+  .info-card .ph{height:210px;border-radius:22px;background:linear-gradient(135deg,#eafafd,#d5f2f8);display:flex;align-items:center;justify-content:center;font-size:66px;border:2px dashed var(--cyan)}
+  .info-card .rx{margin-top:16px;background:var(--ink);color:#fff;font-family:'Baloo 2';font-weight:800;font-size:14px;text-align:center;padding:8px;border-radius:14px}
+
+  /* SECTION HELPERS */
+  section{padding:80px 0}
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 50px}
+  .sec-head h2{font-size:clamp(28px,4vw,44px);line-height:1.05}
+  .sec-head p{color:#555;font-size:17px;margin-top:12px}
+  .tag{color:var(--cyan-dark);font-weight:800;font-family:'Baloo 2';letter-spacing:1px;text-transform:uppercase;font-size:14px}
+
+  /* SCIENCE / WHAT IS */
+  .science .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .science-visual{background:linear-gradient(135deg,var(--cyan),var(--cyan-dark));border:4px solid var(--ink);border-radius:34px;box-shadow:10px 10px 0 var(--ink);height:360px;display:flex;align-items:center;justify-content:center;font-size:96px}
+  .science h2{font-size:clamp(26px,4vw,40px);margin-bottom:14px}
+  .science p{color:#444;font-size:17px;margin-bottom:14px}
+
+  /* PRODUCTS (informative, no price/cart) */
+  .products{background:var(--mist)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .card{background:#fff;border:3px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);overflow:hidden}
+  .card .img{height:200px;background:linear-gradient(135deg,#eafafd,#d5f2f8);display:flex;align-items:center;justify-content:center;font-size:58px;border-bottom:3px solid var(--ink);position:relative}
+  .card .img.alt{background:linear-gradient(135deg,#fff7d6,#ffeea6)}
+  .badge-rx{position:absolute;top:12px;left:12px;background:var(--ink);color:#fff;font-family:'Baloo 2';font-weight:800;font-size:11px;padding:5px 11px;border-radius:50px}
+  .card .body{padding:22px}
+  .card .body h3{font-size:21px}
+  .card .body .meta{color:#555;font-size:14px;margin:8px 0 12px}
+  .card .body .spec{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{background:var(--mist);border:2px solid var(--ink);border-radius:50px;padding:4px 12px;font-size:12px;font-weight:700}
+  .card .link{display:inline-block;margin-top:14px;font-family:'Baloo 2';font-weight:800;font-size:14px;color:var(--cyan-dark)}
+  .disc-inline{text-align:center;margin-top:36px;font-size:13px;color:#777;font-weight:600}
+
+  /* STEPS: cómo acceder */
+  .steps .grid{grid-template-columns:repeat(3,1fr)}
+  .step{background:#fff;border:3px solid var(--ink);border-radius:var(--radius);box-shadow:6px 6px 0 var(--ink);padding:30px 24px;position:relative}
+  .step .num{width:52px;height:52px;border-radius:50%;background:var(--yellow);border:3px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Baloo 2';font-weight:800;font-size:24px;margin-bottom:16px}
+  .step h3{font-size:20px;margin-bottom:6px}
+  .step p{font-size:15px;color:#555}
+
+  /* AUDIENCE split (pacientes / médicos) */
+  .audience .grid{grid-template-columns:1fr 1fr}
+  .aud{border:4px solid var(--ink);border-radius:34px;box-shadow:8px 8px 0 var(--ink);padding:40px 34px}
+  .aud.pat{background:var(--cyan);color:#fff}
+  .aud.doc{background:var(--yellow)}
+  .aud h3{font-size:28px;margin-bottom:10px}
+  .aud p{font-size:16px;margin-bottom:20px}
+  .aud.pat p{color:#eafafd}
+
+  /* STORY */
+  .story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .story-visual{background:linear-gradient(135deg,#fff7d6,var(--yellow));border:4px solid var(--ink);border-radius:34px;box-shadow:10px 10px 0 var(--ink);height:340px;display:flex;align-items:center;justify-content:center;font-size:96px}
+  .story h2{font-size:clamp(26px,4vw,42px);margin-bottom:14px}
+  .story p{color:#444;font-size:17px;margin-bottom:14px}
+
+  /* CONTACT CTA */
+  .cta{background:var(--ink);color:#fff}
+  .cta .wrap{text-align:center;max-width:640px}
+  .cta h2{font-size:clamp(28px,4vw,44px);color:#fff}
+  .cta p{font-size:17px;color:#cfcfcf;margin:12px 0 26px}
+
+  /* FOOTER */
+  footer{background:#111;color:#fff;padding:56px 0 28px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:34px;margin-bottom:34px}
+  footer .logo img{height:40px;margin-bottom:16px}
+  footer h4{font-family:'Baloo 2';font-size:17px;margin-bottom:14px;color:var(--yellow)}
+  footer ul{list-style:none}
+  footer li{margin-bottom:9px;font-size:14px;color:#cfcfcf}
+  footer li a:hover{color:var(--cyan)}
+  .legal{border-top:1px solid #2c2c2c;padding-top:22px;font-size:12px;color:#8a8a8a;line-height:1.7}
+  .legal p{margin-bottom:8px}
+  .foot-bottom{margin-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:#777}
+
+  @media(max-width:860px){
+    nav ul{display:none} .burger{display:block}
+    .hero .wrap,.science .wrap,.story .wrap{grid-template-columns:1fr}
+    .grid,.steps .grid,.audience .grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .info-card{transform:rotate(0)}
+  }
+</style>
+</head>
+<body>
+
+<!-- AGE GATE -->
+<div id="agegate">
+  <div class="box">
+    <img src="distys_logo.png" alt="DISTYS">
+    <h2>¿Eres mayor de 18 años?</h2>
+    <p>DISTYS ofrece información sobre productos de cannabis medicinal de <b>venta bajo prescripción médica</b>. Este sitio es solo para adultos y tiene fines informativos.</p>
+    <div class="gate-btns">
+      <button class="btn btn-yellow" onclick="enterSite()">Sí, soy mayor de edad</button>
+      <a class="btn btn-ghost" href="https://www.google.com">No</a>
+    </div>
+    <p class="mini-legal">Al ingresar confirmas que eres mayor de 18 años y que comprendes que la información aquí no reemplaza una consulta médica.</p>
+  </div>
+</div>
+
+<div id="site" class="hidden">
+
+<div class="compliance">⚕️ Producto de <b>venta bajo receta médica</b> · Contenido informativo · No apto para menores de 18 años</div>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#"><img src="distys_logo.png" alt="DISTYS"></a>
+      <ul>
+        <li><a href="#cannabis">Cannabis medicinal</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#acceso">Cómo acceder</a></li>
+        <li><a href="#audiencia">Pacientes y médicos</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a class="btn btn-yellow" href="#acceso" style="padding:10px 22px;font-size:14px">Cómo acceder</a>
+      <button class="burger">☰</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker">🌿 Cannabis medicinal · Perú</span>
+      <h1>Bienestar en su <span class="hl">estado más puro</span>, diseñado por la naturaleza</h1>
+      <p>DISTYS, de Futura Farms, desarrolla productos de cannabis medicinal de calidad farmacéutica, disponibles bajo prescripción médica en farmacias autorizadas.</p>
+      <div class="hero-cta">
+        <a class="btn btn-yellow" href="#acceso">Cómo acceder al tratamiento</a>
+        <a class="btn btn-ghost" href="#cannabis">Conoce más</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="info-card">
+        <div class="ph">🌿</div>
+        <div class="rx">⚕️ VENTA BAJO RECETA MÉDICA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS / SCIENCE -->
+<section class="science" id="cannabis">
+  <div class="wrap">
+    <div class="science-visual">🔬</div>
+    <div>
+      <span class="tag">Qué es el cannabis medicinal</span>
+      <h2>Ciencia y naturaleza, al servicio de tu bienestar</h2>
+      <p>El cannabis medicinal utiliza compuestos naturales de la planta —como el CBD y el THC— con fines terapéuticos, siempre bajo indicación y seguimiento de un profesional de la salud.</p>
+      <p>En Perú, su uso está regulado por la <b>Ley N° 30681</b> y su reglamento (DS 004-2023-SA), bajo la supervisión de <b>DIGEMID</b>. Aquí encontrarás información clara y responsable; las decisiones de tratamiento siempre las toma tu médico.</p>
+      <a class="btn btn-ghost" href="#acceso" style="margin-top:8px">Ver cómo iniciar</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS (informative) -->
+<section class="products" id="productos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Nuestros productos</span>
+      <h2>Presentaciones DISTYS</h2>
+      <p>Información sobre nuestras presentaciones. No se realizan ventas por este sitio: la dispensación es exclusiva en farmacias autorizadas y bajo receta médica.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="img"><span class="badge-rx">⚕️ Bajo receta</span>🌿</div>
+        <div class="body">
+          <h3>Aceite Full Spectrum</h3>
+          <p class="meta">Descripción informativa del producto y su uso terapéutico general.</p>
+          <div class="spec"><span class="chip">Formato: gotas</span><span class="chip">CBD/THC</span></div>
+          <a class="link" href="#">Ficha informativa →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img alt"><span class="badge-rx">⚕️ Bajo receta</span>💧</div>
+        <div class="body">
+          <h3>CBD &lt; 1% THC</h3>
+          <p class="meta">Presentación no psicoactiva. Descripción informativa general.</p>
+          <div class="spec"><span class="chip">No psicoactivo</span><span class="chip">Receta estándar</span></div>
+          <a class="link" href="#">Ficha informativa →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img"><span class="badge-rx">⚕️ Bajo receta</span>🧴</div>
+        <div class="body">
+          <h3>Presentación tópica</h3>
+          <p class="meta">Descripción informativa del producto y su formato.</p>
+          <div class="spec"><span class="chip">Uso tópico</span><span class="chip">Natural</span></div>
+          <a class="link" href="#">Ficha informativa →</a>
+        </div>
+      </div>
+    </div>
+    <p class="disc-inline">* Contenido informativo. No constituye publicidad de venta ni recomendación de uso. Los precios y la dispensación se gestionan en farmacias autorizadas.</p>
+  </div>
+</section>
+
+<!-- STEPS: cómo acceder -->
+<section class="steps" id="acceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Cómo acceder</span>
+      <h2>Tu tratamiento en 3 pasos</h2>
+      <p>El acceso al cannabis medicinal en Perú siempre pasa por un profesional de la salud.</p>
+    </div>
+    <div class="grid">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Consulta a un médico</h3>
+        <p>Un profesional de la salud evalúa tu caso y determina si el cannabis medicinal es adecuado para ti.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Receta y registro</h3>
+        <p>Recibes tu prescripción. Para productos con THC ≥ 1% se requiere el registro del paciente en el RENPUC (DIGEMID).</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Dispensación en farmacia</h3>
+        <p>Adquieres el producto en una farmacia o botica autorizada, presentando tu receta.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a class="btn btn-cyan" href="#contacto">Habla con nuestro equipo</a>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="audience" id="audiencia">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Para ti</span>
+      <h2>Información según quién eres</h2>
+    </div>
+    <div class="grid">
+      <div class="aud pat">
+        <h3>👥 Pacientes</h3>
+        <p>Resuelve tus dudas sobre el cannabis medicinal, cómo se usa y cómo acceder de forma segura y legal.</p>
+        <a class="btn btn-ghost" href="#acceso">Empieza aquí</a>
+      </div>
+      <div class="aud doc">
+        <h3>⚕️ Profesionales de salud</h3>
+        <p>Accede a información técnica, evidencia y recursos sobre nuestras presentaciones para tu práctica clínica.</p>
+        <a class="btn btn-cyan" href="#contacto">Solicitar recursos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="nosotros">
+  <div class="wrap">
+    <div class="story-visual">🌱</div>
+    <div>
+      <span class="tag">Nuestra historia</span>
+      <h2>Futura Farms, el respaldo detrás de DISTYS</h2>
+      <p>Creemos que el bienestar debe ser puro, honesto y accesible de forma responsable. Aquí irá el texto real de tu marca: origen, valores, estándares de calidad y qué te hace diferente.</p>
+      <p>Nuestro compromiso: productos de calidad farmacéutica, trazabilidad y educación seria sobre el cannabis medicinal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="cta" id="contacto">
+  <div class="wrap">
+    <h2>¿Tienes preguntas?</h2>
+    <p>Escríbenos para orientación general sobre acceso, o si eres profesional de salud y deseas recursos. No brindamos diagnósticos ni recomendaciones médicas por este medio.</p>
+    <div class="hero-cta" style="justify-content:center">
+      <a class="btn btn-yellow" href="mailto:contacto@distys.pe">Escríbenos</a>
+      <a class="btn btn-cyan" href="#">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="logo">
+        <img src="distys_logo.png" alt="DISTYS">
+        <p style="color:#bbb;font-size:14px;max-width:280px">Cannabis medicinal de calidad farmacéutica. Bienestar en su estado más puro, diseñado por la naturaleza.</p>
+      </div>
+      <div>
+        <h4>Información</h4>
+        <ul><li><a href="#cannabis">Cannabis medicinal</a></li><li><a href="#productos">Productos</a></li><li><a href="#acceso">Cómo acceder</a></li></ul>
+      </div>
+      <div>
+        <h4>DISTYS</h4>
+        <ul><li><a href="#nosotros">Nosotros</a></li><li><a href="#audiencia">Profesionales</a></li><li><a href="#contacto">Contacto</a></li></ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul><li><a href="#">Aviso legal</a></li><li><a href="#">Política de privacidad</a></li><li><a href="#">Términos de uso</a></li></ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p><b>Aviso importante:</b> Este sitio tiene carácter exclusivamente informativo y educativo. No constituye publicidad de venta al público, consejo médico, diagnóstico ni recomendación de tratamiento.</p>
+      <p>Los productos de cannabis medicinal son de <b>venta bajo prescripción médica</b> y se dispensan únicamente en establecimientos farmacéuticos autorizados, conforme a la <b>Ley N° 30681</b>, la Ley N° 31312 y su reglamento (D.S. 004-2023-SA), bajo la supervisión de DIGEMID – MINSA (Perú).</p>
+      <p>Contenido dirigido a mayores de 18 años. Consulte siempre a un profesional de la salud antes de iniciar cualquier tratamiento.</p>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 DISTYS · Futura Farms. Todos los derechos reservados.</span>
+      <span>Perú 🇵🇪</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+  function enterSite(){
+    document.getElementById('agegate').classList.add('hidden');
+    document.getElementById('site').classList.remove('hidden');
+    window.scrollTo(0,0);
+  }
+</script>
+</body>
+</html>
